@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://feestracking.freeprojectapi.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

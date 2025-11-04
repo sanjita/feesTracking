@@ -1,0 +1,17 @@
+body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg,#eef2ff 0%, #fff 100%);
+    }
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(15,23,42,0.08);
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }

@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow-sm p-4" style="width: 400px; border-radius: 12px;">
+    <h4 class="text-center mb-3">Institute Portal</h4>
+    <p class="text-center text-muted mb-4">Sign in to continue</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="userName" class="form-label">Email</label>
+        <input
+          type="email"
+          id="userName"
+          class="form-control"
+          formControlName="userName"
+          placeholder="name@example.com"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="togglePassword()"
+          >
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+      </div>
+
+      <div class="form-check mb-3">
+        <input type="checkbox" id="remember" class="form-check-input" />
+        <label for="remember" class="form-check-label">Remember me</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Sign In</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <small class="text-muted">Don’t have an account? <a href="#">Sign up</a></small>
+    </div>
+  </div>
+</div>
