@@ -1,0 +1,149 @@
+<div class="d-flex" id="wrapper" [class.toggled]="isSidebarCollapsed">
+  <!-- Sidebar -->
+  <div class="bg-dark text-white sidebar p-3" id="sidebar">
+    <h4 class="text-center mb-4">Fees Tracker</h4>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white active" routerLink="/dashboard" >
+          <i class="bi bi-speedometer2 me-2"></i> Dashboard
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/masterlist">
+          <i class="bi bi-people me-2"></i> Master
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/packageM">
+          <i class="bi bi-people me-2"></i> Package
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/institute">
+          <i class="bi bi-people me-2"></i> Institutes
+        </a>
+      </li>
+     <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/branch">
+          <i class="bi bi-book me-2"></i> branch
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/course">
+          <i class="bi bi-book me-2"></i> Courses
+        </a>
+      </li>
+      <li class="nav-item mb-2">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-wallet2 me-2"></i> Fees
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          <i class="bi bi-box-arrow-right me-2"></i> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper" class="flex-grow-1 bg-light">
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light bg-white shadow-sm px-3">
+      <button class="btn btn-outline-primary" (click)="toggleSidebar()">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <h5 class="ms-3 mb-0 fw-bold text-primary">Dashboard</h5>
+    </nav>
+
+    <!-- Main Content -->
+     <div class="container mt-4">
+  <h3 class="text-center mb-3">Branch Management</h3>
+
+  <form [formGroup]="branchForm" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-4">
+      <input class="form-control" placeholder="Branch Name" formControlName="branchName" />
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" placeholder="City" formControlName="city" />
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" placeholder="State" formControlName="state" />
+    </div>
+
+    <div class="col-md-3">
+      <input class="form-control" placeholder="Pincode" formControlName="pincode" />
+    </div>
+    <div class="col-md-3">
+      <input class="form-control" placeholder="Location" formControlName="location" />
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" formControlName="instituteId">
+@for (inst of institutes; track inst.instituteId) {       
+        <option  [value]="inst.instituteId">
+          {{ inst.name }}
+        </option>}
+      </select>
+    </div>
+    <div class="col-md-3">
+      <input class="form-control" placeholder="Branch Code" formControlName="branchCode" />
+    </div>
+
+    <div class="col-md-4">
+      <input class="form-control" placeholder="Contact No" formControlName="branchContactNo" />
+    </div>
+    <div class="col-md-4">
+      <input class="form-control" placeholder="Email" formControlName="branchEmail" />
+    </div>
+    <div class="col-md-4 d-grid">
+      <button class="btn btn-primary" type="submit">
+        {{ editMode ? 'Update Branch' : 'Add Branch' }}
+      </button>
+    </div>
+  </form>
+
+  <hr />
+
+  <div class="table-responsive mt-3">
+    <table class="table table-bordered text-center align-middle">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Branch Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Institute</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Code</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (b of branches; track $index) {
+        <tr >
+          <td>{{ b.branchId }}</td>
+          <td>{{ b.branchName }}</td>
+          <td>{{ b.city }}</td>
+          <td>{{ b.state }}</td>
+          <td>{{ b.instituteId }}</td>
+          <td>{{ b.branchContactNo }}</td>
+          <td>{{ b.branchEmail }}</td>
+          <td>{{ b.branchCode }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-1" (click)="editBranch(b)">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteBranch(b.branchId)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+   
+  </div>
+</div>

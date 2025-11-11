@@ -26,7 +26,7 @@ export class Login implements OnInit {
   errorMessage = '';
   loading = false;
   LoginService = inject(LoginService)
-route=inject(Router)
+  route = inject(Router)
   loginForm = this.fb.group({
     userName: ['', Validators.required],
     password: ['', Validators.required]
@@ -62,7 +62,7 @@ route=inject(Router)
         this.loading = false;
 
         console.log('login success');
-        this.route.navigate(['/dashboard'])
+        this.route.navigate(['/dashboard']);
       },
 
       error: (error) => {

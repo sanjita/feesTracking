@@ -20,3 +20,8 @@ export interface PackageMaster {
 
 
 }
+
+export interface ApiResponseModel {
+    data:any;
+    message: string
+}

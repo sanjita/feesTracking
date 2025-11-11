@@ -1,0 +1,47 @@
+
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+#wrapper.toggled .sidebar {
+  margin-left: -240px;
+}
+
+/* Page layout */
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Cards */
+.card {
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    margin-left: -240px;
+  }
+  #wrapper.toggled .sidebar {
+    margin-left: 0;
+  }
+}

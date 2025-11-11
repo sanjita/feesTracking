@@ -34,6 +34,11 @@
         </a>
       </li>
       <li class="nav-item mb-2">
+        <a class="nav-link text-white" routerLink="/enrollment">
+          <i class="bi bi-book me-2"></i> EnrollmentForm
+        </a>
+      </li>
+      <li class="nav-item mb-2">
         <a class="nav-link text-white" href="#">
           <i class="bi bi-wallet2 me-2"></i> Fees
         </a>
@@ -55,60 +60,14 @@
       </button>
       <h5 class="ms-3 mb-0 fw-bold text-primary">Dashboard</h5>
     </nav>
+<p>Current route: {{ router.url }}</p>
 
-    <!-- Main Content -->
- <div class="container mt-4">
-  <h3 class="fw-bold text-primary mb-3">Master Management</h3>
+<main class="p-3 flex-fill">
+  
+    <router-outlet></router-outlet>
+</main>
 
-  <!-- Add/Edit Form -->
-  <form [formGroup]="masterForm" (ngSubmit)="onSubmit()" class="card p-3 mb-4 shadow-sm">
-    <div class="row">
-      <div class="col-md-5">
-        <label class="form-label">Master For</label>
-        <input type="text" formControlName="masterFor" class="form-control" placeholder="e.g. PaymentMode" />
-      </div>
-      <div class="col-md-5">
-        <label class="form-label">Master Value</label>
-        <input type="text" formControlName="masterValue" class="form-control" placeholder="e.g. By Cash" />
-      </div>
-      <div class="col-md-2 d-flex align-items-end">
-        <button type="submit" class="btn btn-primary w-100">
-          {{ editMode ? 'Update' : 'Add' }}
-        </button>
-      </div>
     </div>
-    <div class="text-end mt-2">
-        @if (editMode ) {
-      <button type="button" class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
-        }</div>
-  </form>
 
-  <!-- Table -->
-  <div class="table-responsive shadow-sm">
-    <table class="table table-bordered align-middle">
-      <thead class="table-light">
-        <tr>
-          <th>ID</th>
-          <th>Master For</th>
-          <th>Master Value</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (m of masters; track $index) {
-        <tr >
-          <td>{{ m.masterId }}</td>
-          <td>{{ m.masterFor }}</td>
-          <td>{{ m.masterValue }}</td>
-          <td class="text-center">
-            <button class="btn btn-sm btn-warning me-2" (click)="updateMaster(m)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="deleteMaster(m.masterId)">Delete</button>
-          </td>
-        </tr>}
-      </tbody>
-    </table>
-  </div>
-</div>
 
-  </div>
-</div>
+    

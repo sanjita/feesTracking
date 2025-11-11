@@ -19,7 +19,7 @@
         </a>
       </li>
       <li class="nav-item mb-2">
-        <a class="nav-link text-white" routerLink="/institute">
+        <a class="nav-link text-white"routerLink="/institute">
           <i class="bi bi-people me-2"></i> Institutes
         </a>
       </li>
@@ -56,20 +56,27 @@
       <h5 class="ms-3 mb-0 fw-bold text-primary">Dashboard</h5>
     </nav>
 
-    <!-- Main Content -->
- <div class="container mt-4">
-  <h3 class="fw-bold text-primary mb-3">Master Management</h3>
-
-  <!-- Add/Edit Form -->
-  <form [formGroup]="masterForm" (ngSubmit)="onSubmit()" class="card p-3 mb-4 shadow-sm">
+<form [formGroup]="packageForm" (ngSubmit)="onSubmit()" class="card p-3 mb-4 shadow-sm">
     <div class="row">
       <div class="col-md-5">
-        <label class="form-label">Master For</label>
-        <input type="text" formControlName="masterFor" class="form-control" placeholder="e.g. PaymentMode" />
+        <label class="form-label">PackageName</label>
+        <input type="text" formControlName="packageName" class="form-control" placeholder="e.g. PaymentMode" />
+      </div>
+       <div class="col-md-5">
+        <label class="form-label">OneTimeTotalCost</label>
+        <input type="number" formControlName="oneTimeTotalCost" class="form-control" placeholder="e.g. PaymentMode" />
+      </div>
+       <div class="col-md-5">
+        <label class="form-label">EmiTotalCost</label>
+        <input type="text" formControlName="emiTotalCost" class="form-control" placeholder="e.g. PaymentMode" />
+      </div>
+       <div class="col-md-5">
+        <label class="form-label">MaxBranches</label>
+        <input type="text" formControlName="maxBranches" class="form-control" placeholder="e.g. PaymentMode" />
       </div>
       <div class="col-md-5">
-        <label class="form-label">Master Value</label>
-        <input type="text" formControlName="masterValue" class="form-control" placeholder="e.g. By Cash" />
+        <label class="form-label">MaxStudents</label>
+        <input type="text" formControlName="maxStudents" class="form-control" placeholder="e.g. By Cash" />
       </div>
       <div class="col-md-2 d-flex align-items-end">
         <button type="submit" class="btn btn-primary w-100">
@@ -83,32 +90,30 @@
         }</div>
   </form>
 
-  <!-- Table -->
-  <div class="table-responsive shadow-sm">
-    <table class="table table-bordered align-middle">
-      <thead class="table-light">
-        <tr>
-          <th>ID</th>
-          <th>Master For</th>
-          <th>Master Value</th>
-          <th class="text-center">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (m of masters; track $index) {
-        <tr >
-          <td>{{ m.masterId }}</td>
-          <td>{{ m.masterFor }}</td>
-          <td>{{ m.masterValue }}</td>
-          <td class="text-center">
-            <button class="btn btn-sm btn-warning me-2" (click)="updateMaster(m)">Edit</button>
-            <button class="btn btn-sm btn-danger" (click)="deleteMaster(m.masterId)">Delete</button>
-          </td>
-        </tr>}
-      </tbody>
-    </table>
-  </div>
-</div>
 
+    <!-- Main Content -->
+<!-- Table -->
+  <div class="container mt-4">
+<div class="row g-3">
+    @for (packg of Allpakages; track $index) {
+        <div class="col-md-4">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">PackageName::{{packg.packageName}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">oneTimeTotalCost:: INR {{packg.oneTimeTotalCost}}</h6>
+    
+    <div class="card-text">
+        <span>EmiTotalCost::INR {{packg.emiTotalCost}}</span>
+        ||<span>MaxBranches::{{packg.maxBranches}}</span>||
+
+        <span>MaxStudents::{{packg.packageId}}</span>
+      </div>
+ <button class="btn btn-sm btn-warning me-2" (click)="updatepkgMaster(packg)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deletepkgMaster(packg.packageId)">Delete</button>
   </div>
+</div></div>}
+
+
+   </div>
+  </div></div>
 </div>
