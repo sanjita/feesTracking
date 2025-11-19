@@ -11,10 +11,10 @@ import { Student } from './pages/student/student';
 import { Layout } from './pages/layout/layout';
 
 const routes: Routes = [
-  { 'path': '', redirectTo: '/login', pathMatch: 'full' },
+  { 'path': 'layout', redirectTo: '/login', pathMatch: 'full' },
   { 'path': 'login', component: Login },
   {
-    'path': '',
+    'path': 'layout',
     component: Layout,
     children: [
        { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
